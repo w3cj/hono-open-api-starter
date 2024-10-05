@@ -1,0 +1,41 @@
+{
+  "name": "hono-open-api-starter",
+  "type": "module",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint --fix",
+    "test": "cross-env NODE_ENV=test vitest",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.1",
+    "@hono/zod-openapi": "^0.16.3",
+    "@libsql/client": "^0.14.0",
+    "@scalar/hono-api-reference": "^0.5.150",
+    "dotenv": "^16.4.5",
+    "dotenv-expand": "^11.0.6",
+    "drizzle-orm": "^0.33.0",
+    "drizzle-zod": "^0.5.1",
+    "hono": "^4.6.3",
+    "hono-pino": "^0.3.0",
+    "pino": "^9.4.0",
+    "pino-pretty": "^11.2.2",
+    "stoker": "^1.0.7",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.7.3",
+    "@types/node": "^22.7.4",
+    "cross-env": "^7.0.3",
+    "drizzle-kit": "^0.24.2",
+    "eslint": "^9.11.1",
+    "eslint-plugin-format": "^0.1.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.2"
+  }
+}

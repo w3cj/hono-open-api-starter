@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1728133964232,
+      "tag": "0000_same_squadron_sinister",
+      "breakpoints": true
+    }
+  ]
+}
