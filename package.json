@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.13.1",
-    "@hono/zod-openapi": "^0.16.3",
+    "@hono/zod-openapi": "^0.16.4",
     "@libsql/client": "^0.14.0",
     "@scalar/hono-api-reference": "^0.5.150",
     "dotenv": "^16.4.5",
@@ -24,7 +24,7 @@
     "hono-pino": "^0.3.0",
     "pino": "^9.4.0",
     "pino-pretty": "^11.2.2",
-    "stoker": "^1.0.7",
+    "stoker": "^1.0.9",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -32,7 +32,7 @@
     "@types/node": "^22.7.4",
     "cross-env": "^7.0.3",
     "drizzle-kit": "^0.24.2",
-    "eslint": "^9.11.1",
+    "eslint": "^9.12.0",
     "eslint-plugin-format": "^0.1.2",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2",

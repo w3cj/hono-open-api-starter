@@ -18,7 +18,7 @@ if (env.NODE_ENV !== "test") {
 
 const client = testClient(createApp().route("/", router));
 
-describe("tasks list", () => {
+describe("tasks routes", () => {
   beforeAll(async () => {
     execSync("pnpm drizzle-kit push");
   });

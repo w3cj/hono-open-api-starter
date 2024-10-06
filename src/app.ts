@@ -5,12 +5,12 @@ import tasks from "@/routes/tasks/tasks.index";
 
 const app = createApp();
 
+configureOpenAPI(app);
+
 const routes = [
   index,
   tasks,
 ] as const;
-
-configureOpenAPI(app);
 
 routes.forEach((route) => {
   app.route("/", route);
