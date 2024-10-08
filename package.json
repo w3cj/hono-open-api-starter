@@ -5,11 +5,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsx watch src/index.ts",
+    "start": "node ./dist/src/index.js",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "npm run lint --fix",
     "test": "cross-env NODE_ENV=test vitest",
-    "build": "tsc"
+    "build": "tsc && tsc-alias"
   },
   "dependencies": {
     "@hono/node-server": "^1.13.1",
@@ -34,6 +35,7 @@
     "drizzle-kit": "^0.24.2",
     "eslint": "^9.12.0",
     "eslint-plugin-format": "^0.1.2",
+    "tsc-alias": "^1.8.10",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2",
     "vitest": "^2.1.2"
