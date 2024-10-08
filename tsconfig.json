@@ -3,6 +3,9 @@
     "target": "ESNext",
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
+    "lib": [
+      "ESNext"
+    ],
     "baseUrl": "./",
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -11,7 +14,7 @@
     },
     "typeRoots": ["./node_modules/@types"],
     "types": [
-      "node"
+      "@cloudflare/workers-types/2023-07-01"
     ],
     "strict": true,
     "outDir": "./dist",

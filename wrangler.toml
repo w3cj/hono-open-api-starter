@@ -1,0 +1,5 @@
+name = "hono-starter-cloudflare"
+main = "src/app.ts"
+compatibility_date = "2024-09-25"
+compatibility_flags = [ "nodejs_compat" ]
+keep_vars = true
