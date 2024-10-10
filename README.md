@@ -2,6 +2,10 @@
 
 A starter template for building fully documented type-safe JSON APIs with Hono and Open API.
 
+> For a cloudflare specific template, see the [cloudflare branch](https://github.com/w3cj/hono-open-api-starter/tree/cloudflare) on this repo
+
+> For other deployment examples see the [hono-node-deployment-examples](https://github.com/w3cj/hono-node-deployment-examples) repo
+
 - [Hono Open API Starter](#hono-open-api-starter)
   - [Included](#included)
   - [Setup](#setup)
