@@ -10,16 +10,16 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: ^1.13.1
-        version: 1.13.1(hono@4.6.3)
+        version: 1.13.1(hono@4.6.5)
       '@hono/zod-openapi':
         specifier: ^0.16.4
-        version: 0.16.4(hono@4.6.3)(zod@3.23.8)
+        version: 0.16.4(hono@4.6.5)(zod@3.23.8)
       '@libsql/client':
         specifier: ^0.14.0
         version: 0.14.0
       '@scalar/hono-api-reference':
         specifier: ^0.5.150
-        version: 0.5.150(hono@4.6.3)
+        version: 0.5.150(hono@4.6.5)
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -33,11 +33,11 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1(drizzle-orm@0.33.0(@libsql/client@0.14.0)(@types/better-sqlite3@7.6.11)(better-sqlite3@11.3.0))(zod@3.23.8)
       hono:
-        specifier: ^4.6.3
-        version: 4.6.3
+        specifier: ^4.6.5
+        version: 4.6.5
       hono-pino:
         specifier: ^0.3.0
-        version: 0.3.0(hono@4.6.3)(pino@9.4.0)
+        version: 0.3.0(hono@4.6.5)(pino@9.4.0)
       pino:
         specifier: ^9.4.0
         version: 9.4.0
@@ -46,7 +46,7 @@ importers:
         version: 11.2.2
       stoker:
         specifier: ^1.0.9
-        version: 1.0.9(@asteasolutions/zod-to-openapi@7.1.2(zod@3.23.8))(@hono/zod-openapi@0.16.4(hono@4.6.3)(zod@3.23.8))(hono@4.6.3)(openapi3-ts@4.4.0)
+        version: 1.0.9(@asteasolutions/zod-to-openapi@7.1.2(zod@3.23.8))(@hono/zod-openapi@0.16.4(hono@4.6.5)(zod@3.23.8))(hono@4.6.5)(openapi3-ts@4.4.0)
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -192,9 +192,11 @@ packages:
 
   '@esbuild-kit/core-utils@3.3.2':
     resolution: {integrity: sha512-sPRAnw9CdSsRmEtnsl2WXWdyquogVpB3yZ3dgwJfe8zrOzTsV7cJvmwrKVa+0ma5BoiGJ+BoqkMvawbayKUsqQ==}
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild-kit/esm-loader@2.6.5':
     resolution: {integrity: sha512-FxEMIkJKnodyA1OaCUoEvbYRkoZlLZ4d/eXFu9Fh8CbBBgP5EmZxrfTRyN0qpXZ4vOvqnE5YdRdcrmUUXuU+dA==}
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild/aix-ppc64@0.19.12':
     resolution: {integrity: sha512-bmoCYyWdEL3wDQIVbcyzRyeKLgk2WtWLTWz1ZIAZF/EGbNOwSA6ew3PftJ1PqMiOOGu0OyFMzG53L0zqIpPeNA==}
@@ -1940,8 +1942,8 @@ packages:
       hono: '>=4.0.0'
       pino: '>=7.1.0'
 
-  hono@4.6.3:
-    resolution: {integrity: sha512-0LeEuBNFeSHGqZ9sNVVgZjB1V5fmhkBSB0hZrpqStSMLOWgfLy0dHOvrjbJh0H2khsjet6rbHfWTHY0kpYThKQ==}
+  hono@4.6.5:
+    resolution: {integrity: sha512-qsmN3V5fgtwdKARGLgwwHvcdLKursMd+YOt69eGpl1dUCJb8mCd7hZfyZnBYjxCegBG7qkJRQRUy2oO25yHcyQ==}
     engines: {node: '>=16.9.0'}
 
   hookable@5.5.3:
@@ -2061,6 +2063,7 @@ packages:
 
   libsql@0.4.5:
     resolution: {integrity: sha512-sorTJV6PNt94Wap27Sai5gtVLIea4Otb2LUiAUyr3p6BPOScGMKGt5F1b5X/XgkNtcsDKeX5qfeBDj+PdShclQ==}
+    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lines-and-columns@1.2.4:
@@ -3391,20 +3394,20 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@hono/node-server@1.13.1(hono@4.6.3)':
+  '@hono/node-server@1.13.1(hono@4.6.5)':
     dependencies:
-      hono: 4.6.3
+      hono: 4.6.5
 
-  '@hono/zod-openapi@0.16.4(hono@4.6.3)(zod@3.23.8)':
+  '@hono/zod-openapi@0.16.4(hono@4.6.5)(zod@3.23.8)':
     dependencies:
       '@asteasolutions/zod-to-openapi': 7.1.2(zod@3.23.8)
-      '@hono/zod-validator': 0.3.0(hono@4.6.3)(zod@3.23.8)
-      hono: 4.6.3
+      '@hono/zod-validator': 0.3.0(hono@4.6.5)(zod@3.23.8)
+      hono: 4.6.5
       zod: 3.23.8
 
-  '@hono/zod-validator@0.3.0(hono@4.6.3)(zod@3.23.8)':
+  '@hono/zod-validator@0.3.0(hono@4.6.5)(zod@3.23.8)':
     dependencies:
-      hono: 4.6.3
+      hono: 4.6.5
       zod: 3.23.8
 
   '@humanfs/core@0.19.0': {}
@@ -3540,10 +3543,10 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.24.0':
     optional: true
 
-  '@scalar/hono-api-reference@0.5.150(hono@4.6.3)':
+  '@scalar/hono-api-reference@0.5.150(hono@4.6.5)':
     dependencies:
       '@scalar/types': 0.0.12
-      hono: 4.6.3
+      hono: 4.6.5
 
   '@scalar/openapi-types@0.1.1': {}
 
@@ -4597,13 +4600,13 @@ snapshots:
 
   help-me@5.0.0: {}
 
-  hono-pino@0.3.0(hono@4.6.3)(pino@9.4.0):
+  hono-pino@0.3.0(hono@4.6.5)(pino@9.4.0):
     dependencies:
       defu: 6.1.4
-      hono: 4.6.3
+      hono: 4.6.5
       pino: 9.4.0
 
-  hono@4.6.3: {}
+  hono@4.6.5: {}
 
   hookable@5.5.3: {}
 
@@ -5459,13 +5462,13 @@ snapshots:
 
   std-env@3.7.0: {}
 
-  stoker@1.0.9(@asteasolutions/zod-to-openapi@7.1.2(zod@3.23.8))(@hono/zod-openapi@0.16.4(hono@4.6.3)(zod@3.23.8))(hono@4.6.3)(openapi3-ts@4.4.0):
+  stoker@1.0.9(@asteasolutions/zod-to-openapi@7.1.2(zod@3.23.8))(@hono/zod-openapi@0.16.4(hono@4.6.5)(zod@3.23.8))(hono@4.6.5)(openapi3-ts@4.4.0):
     dependencies:
       '@asteasolutions/zod-to-openapi': 7.1.2(zod@3.23.8)
-      hono: 4.6.3
+      hono: 4.6.5
       openapi3-ts: 4.4.0
     optionalDependencies:
-      '@hono/zod-openapi': 0.16.4(hono@4.6.3)(zod@3.23.8)
+      '@hono/zod-openapi': 0.16.4(hono@4.6.5)(zod@3.23.8)
 
   string-width@4.2.3:
     dependencies:
