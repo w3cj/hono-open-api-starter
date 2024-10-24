@@ -13,31 +13,31 @@
     "build": "tsc && tsc-alias"
   },
   "dependencies": {
-    "@hono/node-server": "^1.13.1",
+    "@hono/node-server": "^1.13.2",
     "@hono/zod-openapi": "^0.16.4",
     "@libsql/client": "^0.14.0",
-    "@scalar/hono-api-reference": "^0.5.150",
+    "@scalar/hono-api-reference": "^0.5.156",
     "dotenv": "^16.4.5",
     "dotenv-expand": "^11.0.6",
     "drizzle-orm": "^0.33.0",
     "drizzle-zod": "^0.5.1",
-    "hono": "^4.6.5",
-    "hono-pino": "^0.3.0",
-    "pino": "^9.4.0",
-    "pino-pretty": "^11.2.2",
-    "stoker": "^1.0.9",
+    "hono": "^4.6.6",
+    "hono-pino": "^0.4.0",
+    "pino": "^9.5.0",
+    "pino-pretty": "^11.3.0",
+    "stoker": "^1.2.7",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.7.3",
-    "@types/node": "^22.7.4",
+    "@antfu/eslint-config": "^3.8.0",
+    "@types/node": "^22.7.9",
     "cross-env": "^7.0.3",
     "drizzle-kit": "^0.24.2",
-    "eslint": "^9.12.0",
+    "eslint": "^9.13.0",
     "eslint-plugin-format": "^0.1.2",
     "tsc-alias": "^1.8.10",
     "tsx": "^4.19.1",
-    "typescript": "^5.6.2",
-    "vitest": "^2.1.2"
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
   }
 }
