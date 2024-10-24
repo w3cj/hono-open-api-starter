@@ -2,7 +2,9 @@
 
 A starter template for building fully documented type-safe JSON APIs with Hono and Open API.
 
-> For a cloudflare specific template, see the [cloudflare branch](https://github.com/w3cj/hono-open-api-starter/tree/cloudflare) on this repo
+> A new version of drizzle was released since the video showing this starter was made. See the [drizzle-v0.35 branch](https://github.com/w3cj/hono-open-api-starter/tree/drizzle-v0.35) and [this commit](https://github.com/w3cj/hono-open-api-starter/commit/92525ff84fb2a247c8245cc889b2320d7b3b6e2c) for the changes required to use drizzle v0.35
+
+> For a cloudflare specific template, see the [cloudflare branch](https://github.com/w3cj/hono-open-api-starter/tree/cloudflare) on this repo and the [cloudflare-drizzle-v0.35 branch](https://github.com/w3cj/hono-open-api-starter/tree/cloudflare-drizzle-v0.35)
 
 > For other deployment examples see the [hono-node-deployment-examples](https://github.com/w3cj/hono-node-deployment-examples) repo
 
