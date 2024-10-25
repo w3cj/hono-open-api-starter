@@ -38,7 +38,7 @@ cd my-api
 Create `.env` file
 
 ```sh
-cp .env.sample .env
+cp .env.example .env
 ```
 
 Create sqlite db / push schema
