@@ -41,16 +41,16 @@ Create `.env` file
 cp .env.example .env
 ```
 
-Create sqlite db / push schema
-
-```sh
-pnpm drizzle-kit push
-```
-
 Install dependencies
 
 ```sh
 pnpm install
+```
+
+Create sqlite db / push schema
+
+```sh
+pnpm drizzle-kit push
 ```
 
 Run
