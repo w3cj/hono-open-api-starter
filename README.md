@@ -1,17 +1,8 @@
-# Hono Open API Starter
+# Deno Hono Open API Starter
 
-A starter template for building fully documented type-safe JSON APIs with Hono
-and Open API.
+A starter template for building fully documented type-safe JSON APIs with Deno, Hono and Open API.
 
-> For a cloudflare specific template, see the
-> [cloudflare branch](https://github.com/w3cj/hono-open-api-starter/tree/cloudflare)
-> on this repo
-
-> For other deployment examples see the
-> [hono-node-deployment-examples](https://github.com/w3cj/hono-node-deployment-examples)
-> repo
-
-- [Hono Open API Starter](#hono-open-api-starter)
+- [Deno Hono Open API Starter](#deno-hono-open-api-starter)
   - [Included](#included)
   - [Setup](#setup)
   - [Code Tour](#code-tour)
@@ -48,37 +39,45 @@ cd my-api
 Create `.env` file
 
 ```sh
-cp .env.sample .env
-```
-
-Create sqlite db / push schema
-
-```sh
-pnpm drizzle-kit push
+cp .env.example .env
 ```
 
 Install dependencies
 
 ```sh
-pnpm install
+deno install
+```
+
+Create sqlite db / push schema
+
+Start the dev db server:
+
+```sh
+deno task db:dev
+```
+
+In another terminal, push the schema
+
+```sh
+deno task db:push
 ```
 
 Run
 
 ```sh
-pnpm dev
+deno task dev
 ```
 
 Lint
 
 ```sh
-pnpm lint
+deno task lint
 ```
 
 Test
 
 ```sh
-pnpm test
+deno task test
 ```
 
 ## Code Tour
