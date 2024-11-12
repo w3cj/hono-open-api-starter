@@ -1,10 +1,15 @@
 # Hono Open API Starter
 
-A starter template for building fully documented type-safe JSON APIs with Hono and Open API.
+A starter template for building fully documented type-safe JSON APIs with Hono
+and Open API.
 
-> For a cloudflare specific template, see the [cloudflare branch](https://github.com/w3cj/hono-open-api-starter/tree/cloudflare) on this repo
+> For a cloudflare specific template, see the
+> [cloudflare branch](https://github.com/w3cj/hono-open-api-starter/tree/cloudflare)
+> on this repo
 
-> For other deployment examples see the [hono-node-deployment-examples](https://github.com/w3cj/hono-node-deployment-examples) repo
+> For other deployment examples see the
+> [hono-node-deployment-examples](https://github.com/w3cj/hono-node-deployment-examples)
+> repo
 
 - [Hono Open API Starter](#hono-open-api-starter)
   - [Included](#included)
@@ -15,14 +20,21 @@ A starter template for building fully documented type-safe JSON APIs with Hono a
 
 ## Included
 
-- Structured logging with [pino](https://getpino.io/) / [hono-pino](https://www.npmjs.com/package/hono-pino)
-- Documented / type-safe routes with [@hono/zod-openapi](https://github.com/honojs/middleware/tree/main/packages/zod-openapi)
-- Interactive API documentation with [scalar](https://scalar.com/#api-docs) / [@scalar/hono-api-reference](https://github.com/scalar/scalar/tree/main/packages/hono-api-reference)
-- Convenience methods / helpers to reduce boilerplate with [stoker](https://www.npmjs.com/package/stoker)
+- Structured logging with [pino](https://getpino.io/) /
+  [hono-pino](https://www.npmjs.com/package/hono-pino)
+- Documented / type-safe routes with
+  [@hono/zod-openapi](https://github.com/honojs/middleware/tree/main/packages/zod-openapi)
+- Interactive API documentation with [scalar](https://scalar.com/#api-docs) /
+  [@scalar/hono-api-reference](https://github.com/scalar/scalar/tree/main/packages/hono-api-reference)
+- Convenience methods / helpers to reduce boilerplate with
+  [stoker](https://www.npmjs.com/package/stoker)
 - Type-safe schemas and environment variables with [zod](https://zod.dev/)
-- Single source of truth database schemas with [drizzle](https://orm.drizzle.team/docs/overview) and [drizzle-zod](https://orm.drizzle.team/docs/zod)
+- Single source of truth database schemas with
+  [drizzle](https://orm.drizzle.team/docs/overview) and
+  [drizzle-zod](https://orm.drizzle.team/docs/zod)
 - Testing with [vitest](https://vitest.dev/)
-- Sensible editor, formatting and linting settings with [@antfu/eslint-config](https://github.com/antfu/eslint-config)
+- Sensible editor, formatting and linting settings with
+  [@antfu/eslint-config](https://github.com/antfu/eslint-config)
 
 ## Setup
 
@@ -71,18 +83,28 @@ pnpm test
 
 ## Code Tour
 
-Base hono app exported from [app.ts](./src/app.ts). Local development uses [@hono/node-server](https://hono.dev/docs/getting-started/nodejs) defined in [index.ts](./src/index.ts) - update this file or create a new entry point to use your preferred runtime.
+Base hono app exported from [app.ts](./src/app.ts). Local development uses
+[@hono/node-server](https://hono.dev/docs/getting-started/nodejs) defined in
+[index.ts](./src/index.ts) - update this file or create a new entry point to use
+your preferred runtime.
 
-Typesafe env defined in [env.ts](./src/env.ts) - add any other required environment variables here. The application will not start if any required environment variables are missing
+Typesafe env defined in [env.ts](./src/env.ts) - add any other required
+environment variables here. The application will not start if any required
+environment variables are missing
 
-See [src/routes/tasks](./src/routes/tasks/) for an example Open API group. Copy this folder / use as an example for your route groups.
+See [src/routes/tasks](./src/routes/tasks/) for an example Open API group. Copy
+this folder / use as an example for your route groups.
 
 - Router created in [tasks.index.ts](./src/routes/tasks/tasks.index.ts)
-- Route definitions defined in [tasks.routes.ts](./src/routes/tasks/tasks.routes.ts)
-- Hono request handlers defined in [tasks.handlers.ts](./src/routes/tasks/tasks.handlers.ts)
+- Route definitions defined in
+  [tasks.routes.ts](./src/routes/tasks/tasks.routes.ts)
+- Hono request handlers defined in
+  [tasks.handlers.ts](./src/routes/tasks/tasks.handlers.ts)
 - Group unit tests defined in [tasks.test.ts](./src/routes/tasks/tasks.test.ts)
 
-All app routes are grouped together and exported into single type as `AppType` in [app.ts](./src/app.ts) for use in [RPC / hono/client](https://hono.dev/docs/guides/rpc).
+All app routes are grouped together and exported into single type as `AppType`
+in [app.ts](./src/app.ts) for use in
+[RPC / hono/client](https://hono.dev/docs/guides/rpc).
 
 ## Endpoints
 

@@ -21,7 +21,7 @@ export const selectTasksSchema = createSelectSchema(tasks);
 export const insertTasksSchema = createInsertSchema(
   tasks,
   {
-    name: schema => schema.name.min(1).max(500),
+    name: (schema) => schema.name.min(1).max(500),
   },
 ).required({
   done: true,

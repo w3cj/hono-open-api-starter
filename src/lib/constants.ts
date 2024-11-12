@@ -11,4 +11,6 @@ export const ZOD_ERROR_CODES = {
   INVALID_UPDATES: "invalid_updates",
 };
 
-export const notFoundSchema = createMessageObjectSchema(HttpStatusPhrases.NOT_FOUND);
+export const notFoundSchema = createMessageObjectSchema(
+  HttpStatusPhrases.NOT_FOUND,
+);
