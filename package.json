@@ -14,9 +14,9 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.13.7",
-    "@hono/zod-openapi": "^0.18.0",
+    "@hono/zod-openapi": "^0.18.3",
     "@libsql/client": "^0.14.0",
-    "@scalar/hono-api-reference": "^0.5.161",
+    "@scalar/hono-api-reference": "^0.5.162",
     "dotenv": "^16.4.5",
     "dotenv-expand": "^12.0.1",
     "drizzle-orm": "^0.33.0",
@@ -29,15 +29,15 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.10.0",
-    "@types/node": "^22.10.0",
+    "@antfu/eslint-config": "^3.11.2",
+    "@types/node": "^22.10.1",
     "cross-env": "^7.0.3",
     "drizzle-kit": "^0.24.2",
-    "eslint": "^9.15.0",
+    "eslint": "^9.16.0",
     "eslint-plugin-format": "^0.1.2",
     "tsc-alias": "^1.8.10",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.6"
   }
 }
