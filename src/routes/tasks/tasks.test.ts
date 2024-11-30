@@ -42,7 +42,7 @@ describe("tasks routes", () => {
     }
   });
 
-  const id = "1";
+  const id = 1;
   const name = "Learn vitest";
 
   it("post /tasks creates a task", async () => {
@@ -73,6 +73,7 @@ describe("tasks routes", () => {
   it("get /tasks/{id} validates the id param", async () => {
     const response = await client.tasks[":id"].$get({
       param: {
+        // @ts-expect-error
         id: "wat",
       },
     });
@@ -87,7 +88,7 @@ describe("tasks routes", () => {
   it("get /tasks/{id} returns 404 when task not found", async () => {
     const response = await client.tasks[":id"].$get({
       param: {
-        id: "999",
+        id: 999,
       },
     });
     expect(response.status).toBe(404);
@@ -131,6 +132,7 @@ describe("tasks routes", () => {
   it("patch /tasks/{id} validates the id param", async () => {
     const response = await client.tasks[":id"].$patch({
       param: {
+        // @ts-expect-error
         id: "wat",
       },
       json: {},
@@ -177,6 +179,7 @@ describe("tasks routes", () => {
   it("delete /tasks/{id} validates the id when deleting", async () => {
     const response = await client.tasks[":id"].$delete({
       param: {
+        // @ts-expect-error
         id: "wat",
       },
     });
