@@ -3,7 +3,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
 export const tasks = sqliteTable("tasks", {
   id: integer("id", { mode: "number" })
-    .primaryKey({ autoIncrement: true }),
+    .primaryKey({ autoIncrement: true })
+    .unique(),
   name: text("name")
     .notNull(),
   done: integer("done", { mode: "boolean" })
