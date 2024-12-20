@@ -4,12 +4,12 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "start": "node ./dist/src/index.js",
+    "dev": "dotenvx run -- tsx watch src/index.ts",
+    "start": "dotenvx run -- node ./dist/src/index.js",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "npm run lint --fix",
-    "test": "cross-env NODE_ENV=test vitest",
+    "test": "dotenvx run -f .env.test --  vitest",
     "build": "tsc && tsc-alias"
   },
   "dependencies": {
@@ -17,8 +17,6 @@
     "@hono/zod-openapi": "^0.18.3",
     "@libsql/client": "^0.14.0",
     "@scalar/hono-api-reference": "^0.5.162",
-    "dotenv": "^16.4.5",
-    "dotenv-expand": "^12.0.1",
     "drizzle-orm": "^0.33.0",
     "drizzle-zod": "^0.5.1",
     "hono": "^4.6.12",
@@ -39,5 +37,6 @@
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "vitest": "^2.1.6"
-  }
+  },
+  "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228"
 }
