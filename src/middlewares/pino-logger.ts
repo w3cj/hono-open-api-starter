@@ -9,8 +9,5 @@ export function pinoLogger() {
     pino: pino({
       level: env.LOG_LEVEL || "info",
     }, env.NODE_ENV === "production" ? undefined : pretty()),
-    http: {
-      reqId: () => crypto.randomUUID(),
-    },
   });
 }
