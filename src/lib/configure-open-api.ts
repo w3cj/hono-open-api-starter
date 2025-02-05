@@ -19,7 +19,7 @@ export default function configureOpenAPI(app: AppOpenAPI) {
       theme: "kepler",
       layout: "classic",
       defaultHttpClient: {
-        targetKey: "javascript",
+        targetKey: "js",
         clientKey: "fetch",
       },
       spec: {
