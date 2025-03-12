@@ -8,7 +8,7 @@ import { ZodIssueCode } from "zod";
 
 import env from "@/env";
 import { ZOD_ERROR_CODES, ZOD_ERROR_MESSAGES } from "@/lib/constants";
-import createApp from "@/lib/create-app";
+import { createTestApp } from "@/lib/create-app";
 
 import router from "./tasks.index";
 
@@ -16,7 +16,7 @@ if (env.NODE_ENV !== "test") {
   throw new Error("NODE_ENV must be 'test'");
 }
 
-const client = testClient(createApp().route("/", router));
+const client = testClient(createTestApp(router));
 
 describe("tasks routes", () => {
   beforeAll(async () => {
