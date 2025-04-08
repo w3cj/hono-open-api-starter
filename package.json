@@ -16,7 +16,7 @@
     "@hono/node-server": "^1.13.8",
     "@hono/zod-openapi": "^0.18.4",
     "@libsql/client": "^0.14.0",
-    "@scalar/hono-api-reference": "^0.5.184",
+    "@scalar/hono-api-reference": "^0.8.0",
     "dotenv": "^16.4.7",
     "dotenv-expand": "^12.0.1",
     "drizzle-orm": "^0.33.0",
