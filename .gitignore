@@ -31,3 +31,5 @@ dev.db
 test.db
 .vercel
 dist
+
+.dev.vars
