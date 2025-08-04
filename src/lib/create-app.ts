@@ -2,9 +2,8 @@ import type { Schema } from "hono";
 
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { requestId } from "hono/request-id";
-// import { defaultHook } from "stoker/openapi";
-import * as HttpStatusCodes from "stoker/http-status-codes";
 import { notFound, onError, serveEmojiFavicon } from "stoker/middlewares";
+import { defaultHook } from "stoker/openapi";
 
 import { pinoLogger } from "@/middlewares/pino-logger";
 
@@ -13,19 +12,7 @@ import type { AppBindings, AppOpenAPI } from "./types";
 export function createRouter() {
   return new OpenAPIHono<AppBindings>({
     strict: false,
-    defaultHook: (result, c) => {
-      if (!result.success) {
-        return c.json(
-          {
-            success: result.success,
-            error: {
-              issues: result.error.issues,
-            },
-          },
-          HttpStatusCodes.UNPROCESSABLE_ENTITY,
-        );
-      }
-    },
+    defaultHook,
   });
 }
 
