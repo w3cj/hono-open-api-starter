@@ -12,6 +12,7 @@ export function createDb(env: Environment) {
   });
 
   const db = drizzle(client, {
+    casing: "snake_case",
     schema,
   });
 

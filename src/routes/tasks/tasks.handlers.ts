@@ -19,8 +19,14 @@ export const list: AppRouteHandler<ListRoute> = async (c) => {
 export const create: AppRouteHandler<CreateRoute> = async (c) => {
   const { db } = createDb(c.env);
   const task = c.req.valid("json");
-  const [inserted] = await db.insert(tasks).values(task).returning();
-  return c.json(inserted, HttpStatusCodes.OK);
+  try {
+    const [inserted] = await db.insert(tasks).values(task).returning();
+    return c.json(inserted, HttpStatusCodes.OK);
+  }
+  catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 export const getOne: AppRouteHandler<GetOneRoute> = async (c) => {
