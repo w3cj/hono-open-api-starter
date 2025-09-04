@@ -10,16 +10,16 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: ^1.18.1
-        version: 1.18.1(hono@4.8.12)
+        version: 1.18.1(hono@4.9.6)
       '@hono/zod-openapi':
         specifier: ^1.0.2
-        version: 1.0.2(hono@4.8.12)(zod@4.0.14)
+        version: 1.0.2(hono@4.9.6)(zod@4.0.14)
       '@libsql/client':
         specifier: ^0.15.10
         version: 0.15.10
       '@scalar/hono-api-reference':
         specifier: ^0.9.13
-        version: 0.9.13(hono@4.8.12)
+        version: 0.9.13(hono@4.9.6)
       dotenv:
         specifier: ^17.2.1
         version: 17.2.1
@@ -33,11 +33,11 @@ importers:
         specifier: ^0.8.2
         version: 0.8.2(drizzle-orm@0.44.4(@libsql/client@0.15.10))(zod@4.0.14)
       hono:
-        specifier: ^4.8.12
-        version: 4.8.12
+        specifier: ^4.9.6
+        version: 4.9.6
       hono-pino:
         specifier: ^0.10.1
-        version: 0.10.1(hono@4.8.12)(pino@9.7.0)
+        version: 0.10.1(hono@4.9.6)(pino@9.7.0)
       pino:
         specifier: ^9.7.0
         version: 9.7.0
@@ -46,7 +46,7 @@ importers:
         version: 13.1.1
       stoker:
         specifier: 2.0.1
-        version: 2.0.1(@asteasolutions/zod-to-openapi@8.1.0(zod@4.0.14))(@hono/zod-openapi@1.0.2(hono@4.8.12)(zod@4.0.14))(hono@4.8.12)(openapi3-ts@4.5.0)
+        version: 2.0.1(@asteasolutions/zod-to-openapi@8.1.0(zod@4.0.14))(@hono/zod-openapi@1.0.2(hono@4.9.6)(zod@4.0.14))(hono@4.9.6)(openapi3-ts@4.5.0)
       zod:
         specifier: ^4.0.14
         version: 4.0.14
@@ -155,8 +155,8 @@ packages:
     resolution: {integrity: sha512-D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/parser@7.28.0':
-    resolution: {integrity: sha512-jVZGvOxOuNSsuQuLRTh13nU0AogFlw32w/MT+LV6D3sP5WdbW61E77RnkbaO2dUvmPAYrBDJXGn5gGS6tH4j8g==}
+  '@babel/parser@7.28.3':
+    resolution: {integrity: sha512-7+Ey1mAgYqFAx2h0RuoxcQT5+MlG3GTV0TQrgr7/ZliKsm/MNDxVVutlWaziMq7wJNAz8MTqz55XLpWvva6StA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -737,6 +737,9 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.5.4':
     resolution: {integrity: sha512-VT2+G1VQs/9oz078bLrYbecdZKs912zQlkelYpuf+SXF+QvZDYJlbx/LSx+meSAwdDFnF8FVXW92AVjjkVmgFw==}
+
+  '@jridgewell/sourcemap-codec@1.5.5':
+    resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
 
   '@libsql/client@0.15.10':
     resolution: {integrity: sha512-J9cJQwrgH92JlPBYjUGxPIH5G9z3j/V/aPnQvcmmCgjatdVb/f7bzK3yNq15Phc+gVuKMwox3toXL+58qUMylg==}
@@ -1816,8 +1819,8 @@ packages:
       hono: '>=4.0.0'
       pino: '>=7.1.0'
 
-  hono@4.8.12:
-    resolution: {integrity: sha512-MQSKk1Mg7b74k8l+A025LfysnLtXDKkE4pLaSsYRQC5iy85lgZnuyeQ1Wynair9mmECzoLu+FtJtqNZSoogBDQ==}
+  hono@4.9.6:
+    resolution: {integrity: sha512-doVjXhSFvYZ7y0dNokjwwSahcrAfdz+/BCLvAMa/vHLzjj8+CFyV5xteThGUsKdkaasgN+gF2mUxao+SGLpUeA==}
     engines: {node: '>=16.9.0'}
 
   ignore@5.3.2:
@@ -1913,6 +1916,7 @@ packages:
 
   libsql@0.5.17:
     resolution: {integrity: sha512-RRlj5XQI9+Wq+/5UY8EnugSWfRmHEw4hn3DKlPrkUgZONsge1PwTtHcpStP6MSNi8ohcbsRgEHJaymA33a8cBw==}
+    cpu: [x64, arm64, wasm32, arm]
     os: [darwin, linux, win32]
 
   local-pkg@1.1.1:
@@ -1937,6 +1941,9 @@ packages:
 
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
+
+  magic-string@0.30.18:
+    resolution: {integrity: sha512-yi8swmWbO17qHhwIBNeeZxTceJMeBvWJaId6dyvTSOwTipqeHhMhOrz6513r1sOKnpvQ7zkhlG8tPrpilwTxHQ==}
 
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
@@ -2740,7 +2747,7 @@ snapshots:
 
   '@babel/helper-validator-identifier@7.27.1': {}
 
-  '@babel/parser@7.28.0':
+  '@babel/parser@7.28.3':
     dependencies:
       '@babel/types': 7.28.2
 
@@ -3082,21 +3089,21 @@ snapshots:
       '@eslint/core': 0.15.1
       levn: 0.4.1
 
-  '@hono/node-server@1.18.1(hono@4.8.12)':
+  '@hono/node-server@1.18.1(hono@4.9.6)':
     dependencies:
-      hono: 4.8.12
+      hono: 4.9.6
 
-  '@hono/zod-openapi@1.0.2(hono@4.8.12)(zod@4.0.14)':
+  '@hono/zod-openapi@1.0.2(hono@4.9.6)(zod@4.0.14)':
     dependencies:
       '@asteasolutions/zod-to-openapi': 8.1.0(zod@4.0.14)
-      '@hono/zod-validator': 0.7.2(hono@4.8.12)(zod@4.0.14)
-      hono: 4.8.12
+      '@hono/zod-validator': 0.7.2(hono@4.9.6)(zod@4.0.14)
+      hono: 4.9.6
       openapi3-ts: 4.5.0
       zod: 4.0.14
 
-  '@hono/zod-validator@0.7.2(hono@4.8.12)(zod@4.0.14)':
+  '@hono/zod-validator@0.7.2(hono@4.9.6)(zod@4.0.14)':
     dependencies:
-      hono: 4.8.12
+      hono: 4.9.6
       zod: 4.0.14
 
   '@humanfs/core@0.19.1': {}
@@ -3113,6 +3120,8 @@ snapshots:
   '@humanwhocodes/retry@0.4.3': {}
 
   '@jridgewell/sourcemap-codec@1.5.4': {}
+
+  '@jridgewell/sourcemap-codec@1.5.5': {}
 
   '@libsql/client@0.15.10':
     dependencies:
@@ -3258,10 +3267,10 @@ snapshots:
     dependencies:
       '@scalar/types': 0.2.11
 
-  '@scalar/hono-api-reference@0.9.13(hono@4.8.12)':
+  '@scalar/hono-api-reference@0.9.13(hono@4.9.6)':
     dependencies:
       '@scalar/core': 0.3.11
-      hono: 4.8.12
+      hono: 4.9.6
 
   '@scalar/openapi-types@0.3.7':
     dependencies:
@@ -3460,7 +3469,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.17':
     dependencies:
-      '@babel/parser': 7.28.0
+      '@babel/parser': 7.28.3
       '@vue/shared': 3.5.17
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -3473,13 +3482,13 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.17':
     dependencies:
-      '@babel/parser': 7.28.0
+      '@babel/parser': 7.28.3
       '@vue/compiler-core': 3.5.17
       '@vue/compiler-dom': 3.5.17
       '@vue/compiler-ssr': 3.5.17
       '@vue/shared': 3.5.17
       estree-walker: 2.0.2
-      magic-string: 0.30.17
+      magic-string: 0.30.18
       postcss: 8.5.6
       source-map-js: 1.2.1
 
@@ -4210,13 +4219,13 @@ snapshots:
 
   help-me@5.0.0: {}
 
-  hono-pino@0.10.1(hono@4.8.12)(pino@9.7.0):
+  hono-pino@0.10.1(hono@4.9.6)(pino@9.7.0):
     dependencies:
       defu: 6.1.4
-      hono: 4.8.12
+      hono: 4.9.6
       pino: 9.7.0
 
-  hono@4.8.12: {}
+  hono@4.9.6: {}
 
   ignore@5.3.2: {}
 
@@ -4323,6 +4332,10 @@ snapshots:
   magic-string@0.30.17:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.4
+
+  magic-string@0.30.18:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.5
 
   markdown-table@3.0.4: {}
 
@@ -4955,12 +4968,12 @@ snapshots:
 
   std-env@3.9.0: {}
 
-  stoker@2.0.1(@asteasolutions/zod-to-openapi@8.1.0(zod@4.0.14))(@hono/zod-openapi@1.0.2(hono@4.8.12)(zod@4.0.14))(hono@4.8.12)(openapi3-ts@4.5.0):
+  stoker@2.0.1(@asteasolutions/zod-to-openapi@8.1.0(zod@4.0.14))(@hono/zod-openapi@1.0.2(hono@4.9.6)(zod@4.0.14))(hono@4.9.6)(openapi3-ts@4.5.0):
     dependencies:
-      hono: 4.8.12
+      hono: 4.9.6
     optionalDependencies:
       '@asteasolutions/zod-to-openapi': 8.1.0(zod@4.0.14)
-      '@hono/zod-openapi': 1.0.2(hono@4.8.12)(zod@4.0.14)
+      '@hono/zod-openapi': 1.0.2(hono@4.9.6)(zod@4.0.14)
       openapi3-ts: 4.5.0
 
   strip-indent@4.0.0:
