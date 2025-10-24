@@ -7,13 +7,13 @@
 		"node": ">=22"
 	},
 	"scripts": {
-		"dev": "tsx watch src/index.ts",
-		"start": "node ./dist/src/index.js",
+		"dev": "vite-node --watch src/index.ts",
+		"start": "node ./dist/index.js",
 		"typecheck": "tsc --noEmit",
-		"lint": "eslint .",
-		"lint:fix": "eslint . --fix",
+		"lint": "oxlint .",
+		"lint:fix": "oxlint . --fix",
 		"test": "cross-env NODE_ENV=test vitest",
-		"build": "tsc && tsc-alias"
+		"build": "vite build"
 	},
 	"dependencies": {
 		"@hono/node-server": "^1.14.2",
@@ -31,15 +31,14 @@
 		"zod": "^3.25.28"
 	},
 	"devDependencies": {
-		"@antfu/eslint-config": "^4.13.2",
 		"@types/node": "^22.15.21",
 		"cross-env": "^7.0.3",
 		"drizzle-kit": "^0.31.1",
-		"eslint": "^9.27.0",
-		"eslint-plugin-format": "^1.0.1",
-		"tsc-alias": "^1.8.16",
-		"tsx": "^4.19.4",
+		"oxlint": "^1.24.0",
 		"typescript": "^5.8.3",
+		"vite": "^6.4.1",
+		"vite-node": "^3.2.4",
+		"vite-tsconfig-paths": "^5.1.4",
 		"vitest": "^3.1.4"
 	}
 }

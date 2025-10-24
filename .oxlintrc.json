@@ -1,0 +1,7 @@
+{
+	"rules": {
+		"no-console": "warn",
+		"no-process-env": "error"
+	},
+	"ignorePatterns": ["**/migrations/*", "dist", "node_modules"]
+}
