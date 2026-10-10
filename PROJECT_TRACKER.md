@@ -2,7 +2,7 @@
 
 > **@file** : PROJECT_TRACKER.md
 > **@description** : الحالة الحيّة للمشروع: شجرة المهام، حالة الموديولات، التركيز الحالي، القرارات المفتوحة، العوائق، Backlog، Change Log، وسياق الـ AI. **بيتحدّث في كل جلسة.**
-> **@updated** : `[ { "date": "2026-10-10", "version": "1.0.0", "by": ["BomBa"], "comment": "إنشاء الملف + تهيئة شجرة المهام من PLAN.md" } ]`
+> **@updated** : `[ { "date": "2026-10-10", "version": "1.0.0", "by": ["BomBa"], "comment": "إنشاء الملف + تهيئة شجرة المهام من PLAN.md" }, { "date": "2026-10-10", "version": "1.0.1", "by": ["Arena Agent"], "comment": "توثيق نتائج فحص توافق Bun للمهمة 0.1" }, { "date": "2026-10-10", "version": "1.0.2", "by": ["Arena Agent"], "comment": "توثيق تهيئة المشروع بالمهمة 0.2" }, { "date": "2026-10-10", "version": "1.0.3", "by": ["Arena Agent"], "comment": "توثيق ESLint وPrettier بالمهمة 0.3" } ]`
 > **النطاق** : Bun + Hono API Starter.
 
 ---
@@ -19,8 +19,8 @@
 | **Started** | 2026-10-10 |
 | **Last Updated** | 2026-10-10 |
 | **Current Phase** | Phase 0 — Repo Analysis & Setup |
-| **Overall Progress** | **0%** (0 / 63 مهمة ✅ Verified) |
-| **Repo State** | ❓ لا يوجد repo وقت التهيئة — كل بند تقني `[VERIFY]` لحد فحص الواقع |
+| **Overall Progress** | **5%** (3 / 63 مهمة ✅ Verified) |
+| **Repo State** | هيكل Bun مهيّأ (0.2): `package.json` بالحزمة المختبرة + `tsconfig` strict و`@a`/`@/*` + `bunfig.toml` + `bun.lock` + `src/alias`. قالب Node/Turso القديم اتشال (محتواه محفوظ في git عند `05303ed`) |
 | **Release Branch الحالي** | — (يتحدد عند أول فرع؛ Tree ID من `git branch -a`) |
 
 ## 🎯 Project Goals
@@ -53,7 +53,7 @@ Overall % = (✅ ÷ إجمالي المهام) × 100          ← 🟣 لا ي�
 
 | Phase | الاسم | الإجمالي | ✅ | 🟣 | 🔵 | 🔴 | % |
 |---|---|---|---|---|---|---|---|
-| 0 | Repo Analysis & Setup | 7 | 0 | 1 | 0 | 0 | 0% |
+| 0 | Repo Analysis & Setup | 7 | 3 | 1 | 0 | 0 | 43% |
 | 1 | Project Foundation | 10 | 0 | 0 | 0 | 0 | 0% |
 | 2 | Database Foundation | 12 | 0 | 0 | 0 | 0 | 0% |
 | 3 | Authentication | 7 | 0 | 0 | 0 | 0 | 0% |
@@ -61,7 +61,7 @@ Overall % = (✅ ÷ إجمالي المهام) × 100          ← 🟣 لا ي�
 | 5 | Multi-Tenancy | 7 | 0 | 0 | 0 | 0 | 0% |
 | 6 | Core API Modules | 9 | 0 | 0 | 0 | 0 | 0% |
 | 7 | Basic Hardening & Release | 5 | 0 | 0 | 0 | 0 | 0% |
-| **Σ** | | **63** | **0** | **1** | **0** | **0** | **0%** |
+| **Σ** | | **63** | **3** | **1** | **0** | **0** | **5%** |
 
 ---
 
@@ -71,9 +71,9 @@ Overall % = (✅ ÷ إجمالي المهام) × 100          ← 🟣 لا ي�
 
 ```
 Phase 0: Repo Analysis & Setup .................................... ⬜  (release/1.1)
-├── 0.1  فحص الـ repo وتأكيد توافق Bun مع المكتبات المختارة ....... ⬜
-├── 0.2  تهيئة المشروع: package.json + tsconfig strict + bunfig + paths .... ⬜
-├── 0.3  ESLint flat config + Prettier + no-restricted-imports .... ⬜
+├── 0.1  فحص الـ repo وتأكيد توافق Bun مع المكتبات المختارة ....... ✅
+├── 0.2  تهيئة المشروع: package.json + tsconfig strict + bunfig + paths .... ✅
+├── 0.3  ESLint flat config + Prettier + no-restricted-imports .... ✅
 ├── 0.4  أدوات الاختبار bun test + عتبات التغطية 80/95 ............ ⬜
 ├── 0.5  Git: main/develop + قالب commit + أول فرع بـ Tree ID ..... ⬜
 ├── 0.6  ملفات التوثيق الخمسة في الجذر ............................ 🟣  (اتكتبت؛ لسه تتحط في repo وتتراجع)
@@ -185,20 +185,41 @@ Phase 7: Basic Hardening & Release ................................ ⬜  (releas
 ```
 
 ### Task 0.1: فحص الـ repo وتأكيد توافق Bun
-- Branch: — (قبل الفرع الأول)   - Spec: —   - الحالة: ⬜
-- الخطوات الذرية: فحص الـ repo (لو موجود) · تثبيت كل مكتبة مختارة بنسخة مستقرة · تشغيل smoke test لكل واحدة تحت Bun · تسجيل النتيجة (CL-04).
-- دليل التحقق: تقرير توافق مكتوب + أوامر اتنفذت فعلاً.
-- ملاحظات: لا تفترض إن مكتبة شغالة بدون تشغيلها.
+- Branch: — (قبل الفرع الأول)   - Spec: CL-04   - الحالة: ✅ VERIFIED
+- واقع الـ repo: `package.json` و`pnpm-lock.yaml` بيستخدموا Node/tsx و`@hono/node-server` وDrizzle مع `@libsql/client` و`dialect: "turso"`. مفيش `postgres` أو `better-auth` أو `bcrypt` كاعتماديات مباشرة، ومفيش `bunfig.toml` أو Bun lockfile. الـ repo الحالي مختلف عن المكدس المعتمد في ARCHITECTURE.
+- نطاق الاختبار: إصدارات `latest` المستقرة وقت الفحص (`npm view <package>@latest version`) اتثبتت بـBun في `/tmp/bun-cl04-project`، من غير تعديل `package.json` أو lockfile أو كود المشروع.
+- البيئة: Bun `1.4.3` · PostgreSQL `16.4` من binaries مؤقتة `@embedded-postgres/linux-x64@16.4.0-beta.14`. Docker مش موجود في البيئة، فاشتغل PostgreSQL على `127.0.0.1:55432` للاختبار واتقفل بعده.
+- المكتبات المختبرة: `hono@4.13.13` · `zod@4.6.5` · `drizzle-orm@0.45.4` · `postgres@3.4.9` · `better-auth@1.7.7` · `pino@10.4.0` · `bcrypt@6.0.0`.
+- أمر التحقق: `/tmp/bun-cl04-agent/node_modules/.bin/bun /tmp/bun-cl04-project/smoke.mjs` — exit code `0` و`SUMMARY 7/7 passed`.
+- النتائج: Hono مع `Bun.serve` رجّع HTTP 200 · Zod قبل ورفض البيانات المتوقعة · `postgres.js` نفّذ `SELECT` على PostgreSQL 16.4 · Drizzle نفّذ `CREATE` و`INSERT/RETURNING` و`SELECT` · Better Auth handler على Hono رجّع `/api/auth/ok` بـHTTP 200 و`{ok:true}` · Pino كتب سجل JSON منظم · bcrypt نجح في `hash/compare` على cost 12.
+- حدود الدليل: اختبار Better Auth شمل إنشاء الـhandler ومسار `/ok` فقط، مش DB adapter أو جلسات/تسجيل دخول؛ CL-01 وCL-02 لسه مفتوحين لمهامهم. README الرسمي لـHono وDrizzle بيذكر Bun صراحة؛ توثيق `postgres` وPino وbcrypt بيركز على Node/Deno أو Node، فنجاح التشغيل دليل عملي للإصدارات دي مش ضمان دعم رسمي من أصحابها. التطبيق الموجود في الـrepo نفسه ما اتشغّلش تحت Bun بسبب اختلاف إعداداته واعتمادياته؛ ما اتعملش أي تغيير عليه.
+
+### Task 0.2: تهيئة المشروع
+- Branch: — (لسه قبل فرع 0.5)   - Spec: —   - الحالة: ✅ VERIFIED
+- التنفيذ: `package.json` جديد بالاسم `bun-hono-api-starter` وأسماء scripts المؤكدة (`typecheck` / `lint` / `test`) والاعتماديات السبعة المختبرة في 0.1 بإصداراتها بالظبط + `typescript@5.9.3` و`@types/bun@1.4.2` و`@types/bcrypt@6.0.0` · `tsconfig.json` بـ`strict: true` ومسارات `@a` و`@a/*` و`@/*` · `bunfig.toml` (`[install] exact = true`) · `src/alias/` (index + core + libs) بتصدّر الحزمة كاملة من `@a` · هيكل `src/` الفاضي (config · core · database · middleware · modules · events · openapi).
+- إزالة قالب Node/Turso القديم: `src/app.ts` و`src/index.ts` و`src/env.ts` و`src/db/` و`src/lib/` و`src/middlewares/` و`src/routes/` و`drizzle.config.ts` (dialect turso) و`vitest.config.ts` و`eslint.config.mjs` (antfu) و`pnpm-lock.yaml` — تنفيذ قرار المستخدم بمتابعة الوثيقة والخطة (مخالفات ADR-001/002/020)، والمحتوى القديم محفوظ في git عند `05303ed`.
+- إصدار TypeScript: اتختار `5.9.3` (آخر 5.x الناضج بدل 7.x الجديد) لتوافق أنواع Drizzle/Better Auth — قرار صغير مسجّل.
+- دليل التحقق: `bun install` → 48 حزمة وبـ`bun.lock` · `bun run typecheck` → exit code `0` بدون أخطاء · فحص runtime بـ`bun -e` استورد من `@a` و`@/alias/core` وطلع `Hono === HonoFromSrc` بمقدار `true` (المسارين بيوصلوا لنفس الوحدة).
+- بوابات الجودة: typecheck ✅ · lint ⬜ (exit 127: eslint مش مثبت — إعداده مهمة 0.3) · test ⬜ (`bun test` v1.4.3 شغّال بس قال `No tests found!` — التجهيز مهمة 0.4) · build غير معرّف لحد دلوقتي.
+- ملاحظات: `.env.example` و`.env.test` و`README.md` لسه بيوصفوا القالب القديم — مهامهم 1.1 و0.7 · `drizzle.config.ts` الجديد هيتعمل في 2.2 · السكريبت `test` = `bun test` محتاج Bun على PATH زي أي تشغيل حقيقي للمشروع.
+
+### Task 0.3: ESLint flat config + Prettier + no-restricted-imports
+- Branch: — (لسه قبل فرع 0.5)   - Spec: —   - الحالة: ✅ VERIFIED
+- التنفيذ: تثبيت `eslint@10.12.0` و`@eslint/js@10.0.1` و`typescript-eslint@8.71.1` و`globals@17.13.0` و`eslint-config-prettier@10.1.8` و`prettier@3.9.10` · `eslint.config.mjs` (flat) بقواعد ARCHITECTURE §18 كاملة: `no-explicit-any: error` و`no-unused-vars` بتتجاهل `_` (كل الفئات) و`no-restricted-imports` بتحمي `@a` من الاستيراد المباشر للسبع مكتبات (مع إعفاء `src/alias/**`) و`eqeqeq: always` و`curly: all` + `no-eval`/`no-new-func` + `consistent-type-imports` · `prettier.config.mjs` (singleQuote + semi) · سكريبتات `format` و`format:check` بحدود مقصودة (`src/**/*.ts` و`*.json` و`*.mjs`) — الـ docs العربية خارج نطاق Prettier عمداً.
+- اكتشاف وتصحيح أثناء التنفيذ: `eslint-config-prettier` بيسدّد قاعدة `curly` (specialRule) وهو آخر config، فبقت القاعدة المطلوبة ميتة؛ اتثبت ده بفحص حرف `curly` في `node_modules/eslint-config-prettier/index.js`، واتحل بإعادة تفعيل `curly: ['error','all']` بعد كائن `prettier`.
+- دليل التحقق: `bun run lint` → exit `0` · `bun run format:check` → `All matched files use Prettier code style!` · `bun run typecheck` → exit `0` · الاختبار السلبي: ملف مؤقت `src/negative-check.ts` بخمسة انتهاكات (استيراد `hono` مباشر + `any` + متغير غير مستخدم + `==` + `if` بدون أقواس) → `5 problems (5 errors)` بكل القواعد المطلوبة شغّالة، وبعدها اتشال والبوابات رجعت خضرا.
+- بوابات الجودة: typecheck ✅ · lint ✅ · format:check ✅ · test ⬜ (لسه 0.4).
+- ملاحظات: `curly` لازم تفضل بعد `prettier` في `eslint.config.mjs` — لو اتنقلت القاعدة هتتهدى تاني؛ التعليق في الملف بيوثق ده.
 
 ---
 
 ## 🔄 CURRENT FOCUS (التركيز الحالي)
 
 ```
-Working On : لا مهمة 🔵 — الوثائق (0.6) اتكتبت 🟣 وبانتظار نقلها لـ repo ومراجعتها
-Next Up    : 0.1 (فحص الـ repo + توافق Bun) ثم 0.2 → 0.3 → 0.4
+Working On : لا مهمة 🔵 — 0.3 ✅ وخلاص؛ مستني أمر المستخدم للمهمة الجاية
+Next Up    : 0.4 (bun test + عتبات التغطية 80/95) ثم 0.5 → 0.7
 Parallel   : —
-Blockers   : لا يوجد (انظر أدناه)
+Blockers   : لا يوجد
 ```
 > قاعدة: مهمة واحدة 🔵 في نفس الوقت.
 
@@ -208,7 +229,7 @@ Blockers   : لا يوجد (انظر أدناه)
 
 | ID | السؤال | يحجب | تاريخ الفتح | الخيارات / التوصية | الحالة |
 |---|---|---|---|---|---|
-| CL-04 | توافق Bun مع المكتبات المختارة | Phase 1 | 2026-10-10 | يتأكد بتشغيل فعلي في 0.1 | ⬜ |
+| CL-04 | توافق Bun مع المكتبات المختارة | Phase 1 | 2026-10-10 | smoke test فعلي 7/7 على Bun 1.4.3 (0.1)، والإصدارات المختبرة اتثبتت في المشروع في 0.2. الحالة: محسوم بموافقة المستخدم («كمل») | ✅ محسوم — اعتمد |
 | CL-03 | جدوى سكريبت تسمية py/sy و`.down.sql` فوق drizzle-kit | 2.2 | 2026-10-10 | يتأكد في 2.2؛ البديل: ترقيم drizzle الافتراضي | ⬜ |
 | CL-01 | Better Auth مع مفاتيح SERIAL | 2.6 · 3.1 | 2026-10-10 | يتأكد قبل 2.6 | ⬜ |
 | CL-02 | Better Auth مع bcrypt مخصص | 3.2 | 2026-10-10 | يتأكد قبل 3.2 | ⬜ |
@@ -255,6 +276,9 @@ Blockers   : لا يوجد (انظر أدناه)
 | التاريخ | Task ID | الفعل | التفاصيل |
 |---|---|---|---|
 | 2026-10-10 | 0.6 | 🟣 Implemented | إنشاء AI_INSTRUCTIONS / ARCHITECTURE / SPECKIT / PLAN / PROJECT_TRACKER من الخطة الأصلية وPRDs والمهارات وقرارات UD-01…UD-17 |
+| 2026-10-10 | 0.1 | ✅ Verified | تشغيل smoke tests فعلية 7/7 للمكدس المخطط تحت Bun 1.4.3 وعلى PostgreSQL 16.4؛ اختلاف إعدادات الـ repo الحالي اتوثّق من غير تعديل للكود أو الاعتماديات، واعتماد CL-04 منتظر المستخدم |
+| 2026-10-10 | 0.2 | ✅ Verified | تهيئة المشروع: package.json + tsconfig strict مع `@a`/`@/*` + bunfig + bun.lock + src/alias وهيكل src/؛ إزالة قالب Node/Turso القديم (محفوظ في git عند 05303ed)؛ typecheck يعدّي والـ aliases متحقق منها بـruntime |
+| 2026-10-10 | 0.3 | ✅ Verified | ESLint flat + Prettier + حماية `@a`؛ الاختبار السلبي وقّع 5/5 انتهاكات؛ تصحيح تعارض `curly` مع eslint-config-prettier؛ lint وformat:check وtypecheck بيعدّوا |
 | 2026-10-10 | — | ✅ قرارات | تسجيل ADR-001…ADR-021 في ARCHITECTURE |
 | 2026-10-10 | — | ❓ فتح | CL-01…CL-05 + MOD-1 |
 
@@ -266,16 +290,23 @@ Blockers   : لا يوجد (انظر أدناه)
 - اتقرت الخطة الأصلية وPRD السيرفر (Express) وPRD الداتابيز وكل مهارات BomBa المطلوبة.
 - المستخدم حسم Q1…Q16 كلها بتوصياتي، وأضاف قاعدتين: المعاملات (الكل أو لا شيء) وUTC بصيغة ISO 8601.
 - اتكتبت الملفات الخمسة بشكل متكيّف مع Backend.
+- 0.1 ✅: اتفحص الـ repo الفعلي (كان Node/tsx + Drizzle/Turso/libSQL)، واختبارات Bun/CL-04 عدّت 7/7 على Bun 1.4.3 وPostgreSQL 16.4 في مساحة مؤقتة.
+- المستخدم وجه بمتابعة الوثيقة والخطة، وبعدها أمر بـ«كمل»: فاتعتمد CL-04 واتنفّذت 0.2.
+- 0.2 ✅: `package.json` بالحزمة المختبرة السبعة بإصدارتها بالظبط + `typescript@5.9.3` و`@types/bun` و`@types/bcrypt` · `tsconfig` strict مع مسارات `@a` و`@a/*` و`@/*` · `bunfig.toml` · `src/alias` (index/core/libs) · هيكل `src/` الفاضي. قالب Node/Turso القديم اتشال بالكامل (محفوظ في git عند `05303ed`) — ده تنفيذ قرار مسار الوثائق.
+- 0.3 ✅: `eslint.config.mjs` (flat) بقواعد §18 كاملة + حماية `@a` من الاستيراد المباشر (مع إعفاء `src/alias/**`) · `prettier.config.mjs` (singleQuote + semi) · سكريبتات `format`/`format:check` بحدود مقصودة تسيب الـ docs العربية في حالها. الاختبار السلبي أثبت إن القواعد الخمسة (restricted-imports وany وunused وeqeqeq وcurly) بتشتغل فعلاً.
 
 ### الحالة الحالية
-- مفيش كود ولا repo. الملفات الخمسة هي المخرج الوحيد. كل الحالات ⬜ ما عدا 0.6 (🟣).
+- 0.1 ✅ و0.2 ✅ و0.3 ✅ و0.6 🟣؛ مفيش مهمة 🔵 دلوقتي؛ باقي المهام ⬜. CL-04 محسوم ✅.
+- السكريبتات المؤكدة: `typecheck` ✅ · `lint` ✅ · `format`/`format:check` ✅ · `test` (هيجهز في 0.4).
 
 ### آخر تحقق
-- `validate_docs.py` بس (فحص الوثائق). Typecheck/Lint/Test/Build: **لم تُشغَّل** (مفيش كود).
+- `bun run lint` → exit `0` · `bun run format:check` → `All matched files use Prettier code style!` · `bun run typecheck` → exit `0`.
+- الاختبار السلبي على `src/negative-check.ts` المؤقت: `5 problems (5 errors)` بالقواعد المطلوبة كلها، والملف اتشال بعدها والبوابات رجعت خضرا.
+- `python3 scripts/docs/validate_docs.py --root .` بعد تحديث الـ Tracker → 0 أخطاء.
 
 ### الخطوة الجاية بالظبط
-1. نقل الملفات الخمسة لجذر الـ repo ووضع الخطة الأصلية في `docs/PLAN__Bun-hono-api-starter.md`.
-2. 0.1: فحص الـ repo وتوافق Bun (CL-04) ثم 0.2 → 0.5.
+1. استنى أمر المستخدم.
+2. عند الأمر: نفّذ 0.4 بس (bun test + عتبات التغطية 80/95) لحد `bun run test` يعدّي، وبعدها 0.5.
 
 ### قرارات مهمة (ملخّص — التفاصيل في ARCHITECTURE › ADR)
 - Bun + Hono (ADR-001) · Postgres فقط (ADR-002) · DB PRD ملزم لطبقة الداتابيز فقط (ADR-003).
@@ -283,8 +314,11 @@ Blockers   : لا يوجد (انظر أدناه)
 - معاملات الكل أو لا شيء (ADR-018) · UTC بصيغة ISO 8601 (ADR-019).
 
 ### مشاكل معروفة / مخاطر
-- R1: Better Auth مع SERIAL وbcrypt مخصص لسه `[VERIFY]` (CL-01/02).
+- R1: Better Auth مع SERIAL وbcrypt مخصص لسه `[VERIFY]` (CL-01/02)؛ اختبار 0.1 ما غطّاش adapter أو hasher مخصص.
+- R2: الإصدارات المختبرة اشتغلت تحت Bun، لكن README بتاع `postgres` وPino وbcrypt مش بيوعد بدعم Bun صراحة؛ النتيجة عملية للإصدارات المذكورة ومش ضمان من أصحاب المكتبات.
 - R8: rate limit بالذاكرة لحد B-1.
+- R9: قالب Node/Turso القديم اتشال في 0.2 (قرار مسار الوثائق)؛ المحتوى محفوظ في git عند `05303ed`.
+- `.env.example` و`.env.test` و`README.md` لسه بيوصفوا القالب القديم — مهامهم 1.1 و0.7.
 
 ### Incomplete Blocks (علامات `[ ] - todo`)
 | الملف | السطر | الناقص |
@@ -301,6 +335,9 @@ Blockers   : لا يوجد (انظر أدناه)
 | # | التاريخ | الـ Agent | المهام | الحالة بعد الجلسة | ملاحظات |
 |---|---|---|---|---|---|
 | 1 | 2026-10-10 | Claude | إنشاء الملفات الخمسة | 0.6 🟣 | بانتظار نقلها لـ repo وبدء 0.1 |
+| 2 | 2026-10-10 | Arena Agent | 0.1: فحص الـ repo واختبارات Bun/CL-04 | 0.1 ✅؛ CL-04 بانتظار اعتماد المستخدم | 7/7 smoke tests نجحوا على الإصدارات المسجلة؛ التطبيق الحالي مختلف عن الوثائق، ولم يتغير كوده أو اعتمادياته |
+| 3 | 2026-10-10 | Arena Agent | 0.2: تهيئة المشروع + إزالة قالب Node/Turso | 0.2 ✅؛ CL-04 محسوم | typecheck يعدّي و`@a`/`@/*` متحقق منهم بـruntime؛ lint وtest بواباتهما 0.3 و0.4 |
+| 4 | 2026-10-10 | Arena Agent | 0.3: ESLint flat + Prettier + حماية `@a` | 0.3 ✅ | اختبار سلبي 5/5 انتهاكات اتصادوا؛ تصحيح تعارض `curly` مع eslint-config-prettier؛ lint وformat:check وtypecheck خضرا |
 
 ---
 
