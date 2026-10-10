@@ -1,23 +1,19 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx",
-    "baseUrl": "./",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "typeRoots": ["./node_modules/@types"],
-    "types": [
-      "node"
-    ],
+    "esModuleInterop": true,
     "strict": true,
-    "outDir": "./dist",
-    "skipLibCheck": true
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": ["bun"],
+    "baseUrl": ".",
+    "paths": {
+      "@a": ["./src/alias/index.ts"],
+      "@a/*": ["./src/alias/*"],
+      "@/*": ["./src/*"]
+    }
   },
-  "tsc-alias": {
-    "resolveFullPaths": true
-  }
+  "include": ["src"]
 }

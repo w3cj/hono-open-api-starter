@@ -1,0 +1,19 @@
+# ╔═════════════════════════════════════════════════════════════════╗
+# ║ قالب Commit — Bun Hono API Starter (AI_INSTRUCTIONS §9)        ║
+# ╚═════════════════════════════════════════════════════════════════╝
+# الصيغة: <emoji> <type>(<scope>): <عنوان بالمصري> + body بالمصري
+# الأنواع: ✨ feat · 🐛 fix · 📝 docs · ♻️ refactor · ✅ test
+#          🔧 chore · ⚡ perf · 🔒 security · 🗃️ db · 🏗️ arch
+# القواعد: ✅ commit ذري (مهمة واحدة) · ✅ اشرح «إيه اللي اتغير وليه» بالمصري
+#          ❌ ممنوع رسائل غامضة (fix / update) أو Arabizi
+# الدمج: ✅ Squash Merge للـ feature الصغيرة · Merge Commit للـ release
+#        ❌ ممنوع force push على main/develop/release/* من غير تأكيد صريح
+# ────────────────────────────────────────────────────────────────────
+# امسح الأسطر اللي فوق (كلها بـ #) واملا التحت كده:
+
+<emoji> <type>(<scope>): <عنوان بالمصري بالمختصر>
+
+<شرح بالمصري: إيه اللي اتغير وليه>
+
+Task: <رقم المهمة من PROJECT_TRACKER — مثال: 0.5>
+Tree-ID: <type>/<tree-id>-<slug> — مثال: feature/1.1.1-project-setup
