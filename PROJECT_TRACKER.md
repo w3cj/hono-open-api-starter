@@ -20,8 +20,8 @@
 | **Last Updated** | 2026-10-10 |
 | **Current Phase** | Phase 0 — Repo Analysis & Setup |
 | **Overall Progress** | **6%** (4 / 63 مهمة ✅ Verified) |
-| **Repo State** | هيكل Bun مهيّأ (0.2): `package.json` بالحزمة المختبرة + `tsconfig` strict و`@a`/`@/*` + `bunfig.toml` + `bun.lock` + `src/alias`. قالب Node/Turso القديم اتشال (محتواه محفوظ في git عند `05303ed`) |
-| **Release Branch الحالي** | — (يتحدد عند أول فرع؛ Tree ID من `git branch -a`) |
+| **Repo State** | هيكل Bun مهيّأ (0.2): `package.json` بالحزمة المختبرة + `tsconfig` strict و`@a`/`@/*` + `bunfig.toml` + `bun.lock` + `src/alias`. قالب Node/Turso القديم اتشال (محتواه محفوظ في git عند `05303ed`). Git (0.5): `.gitmessage` + `scripts/git/setup-git.sh` |
+| **Release Branch الحالي** | — (أول فرع محدّد: `feature/1.1.1-project-setup` جاهز — يتولّد بـ `bash scripts/git/setup-git.sh`) |
 
 ## 🎯 Project Goals
 1. أساس Backend آمن ومتعدد المستأجرين يتبع قواعد BomBa.
@@ -53,7 +53,7 @@ Overall % = (✅ ÷ إجمالي المهام) × 100          ← 🟣 لا ي�
 
 | Phase | الاسم | الإجمالي | ✅ | 🟣 | 🔵 | 🔴 | % |
 |---|---|---|---|---|---|---|---|
-| 0 | Repo Analysis & Setup | 7 | 4 | 1 | 0 | 0 | 57% |
+| 0 | Repo Analysis & Setup | 7 | 4 | 2 | 0 | 0 | 57% |
 | 1 | Project Foundation | 10 | 0 | 0 | 0 | 0 | 0% |
 | 2 | Database Foundation | 12 | 0 | 0 | 0 | 0 | 0% |
 | 3 | Authentication | 7 | 0 | 0 | 0 | 0 | 0% |
@@ -61,7 +61,7 @@ Overall % = (✅ ÷ إجمالي المهام) × 100          ← 🟣 لا ي�
 | 5 | Multi-Tenancy | 7 | 0 | 0 | 0 | 0 | 0% |
 | 6 | Core API Modules | 9 | 0 | 0 | 0 | 0 | 0% |
 | 7 | Basic Hardening & Release | 5 | 0 | 0 | 0 | 0 | 0% |
-| **Σ** | | **63** | **4** | **1** | **0** | **0** | **6%** |
+| **Σ** | | **63** | **4** | **2** | **0** | **0** | **6%** |
 
 ---
 
@@ -75,7 +75,7 @@ Phase 0: Repo Analysis & Setup .................................... ⬜  (releas
 ├── 0.2  تهيئة المشروع: package.json + tsconfig strict + bunfig + paths .... ✅
 ├── 0.3  ESLint flat config + Prettier + no-restricted-imports .... ✅
 ├── 0.4  أدوات الاختبار bun test + عتبات التغطية 80/95 ............ ✅
-├── 0.5  Git: main/develop + قالب commit + أول فرع بـ Tree ID ..... ⬜
+├── 0.5  Git: main/develop + قالب commit + أول فرع بـ Tree ID ..... 🟣  (القالب والسكريبت جاهزين ومُختبرين؛ توليد الفروع بأمر واحد)
 ├── 0.6  ملفات التوثيق الخمسة في الجذر ............................ 🟣  (اتكتبت؛ لسه تتحط في repo وتتراجع)
 └── 0.7  README + CHANGELOG + ملف الخطة الأصلية في docs/ .......... ⬜
 
@@ -220,13 +220,24 @@ Phase 7: Basic Hardening & Release ................................ ⬜  (releas
 - بوابات الجودة: test ✅ (5/5 + coverage report) · lint ✅ · typecheck ✅ · format:check ✅.
 - ملاحظة بيئة: `bun` كان بره PATH في بيئة التنفيذ هنا (تحت `/tmp`)، فالتشغيل تم مع إضافته على PATH زي أي بيئة Bun حقيقية.
 
+### Task 0.5: Git: main/develop + قالب commit + أول فرع بـ Tree ID
+- Branch: — (لسه قبل أول فرع Tree ID)   - Spec: —   - الحالة: 🟣 IMPLEMENTED
+- قرار المستخدم (2026-10-10، سؤال وجواب): جلسة الشغل مقيّدة بفرع واحد فممنوع إنشاء/دفع فروع تانية هنا؛ النطاق المتفق عليه = **ملفات + سكريبت تجهيز**، وتوليد الفروع الفعلي وقت طلب المستخدم أو بعد دمج PR التهيئة، والنتيجة تتوثّق في السجل ده.
+- التنفيذ:
+  - `.gitmessage`: قالب commit جاهز بصيغة §9 (`<emoji> <type>(<scope>): <عنوان>` + body بالمصري + سطور Task/Tree-ID) والقواعد مكتوبة جوه القالب كتعليقات بتتمسح تلقائياً.
+  - `scripts/git/setup-git.sh`: تجهيز بأمر واحد وآمن لإعادة التشغيل — بيربط `commit.template` بـ`.gitmessage` · بيعمل `develop` من `main` (أو `origin/main`) · بيعمل أول فرع Tree ID `feature/1.1.1-project-setup` من `develop` · بيطبع `git branch -a` للتحقق · بيقبل `--push` للدفع على origin. الفروع الموجودة بتتخطى من غير تعديل.
+  - `AI_INSTRUCTIONS.md` §9: اتوثّق فيه القالب والأمر الجاهز.
+- الإثبات (في clone نضيف في `/tmp` من غير قيود فرع الجلسة): التشغيل الأول عمل الفرعين و`git branch -a` وراهم بيبينهم · التشغيل التاني⏭️ تخطّاهم (idempotent) · `GIT_EDITOR=cat git commit` ورّى القالب كاملاً كرسالة مبدئية · تصحيحين اتكشفوا بالاختبار واتصلّحوا: القبول من `origin/main` لو `main` المحلي مش موجود، ومنع `develop` من عمل upstream غلط على `origin/main` (`--no-track`).
+- اللي متبقي للإغلاق ✅: تشغيل `bash scripts/git/setup-git.sh` (أو بـ`--push`) في المستودع نفسه وقت ما المستخدم يختار — عندها `git branch -a` هيبين `develop` و`feature/1.1.1-project-setup` وده deliverable المهمة حرفياً في `PLAN.md`.
+- ملاحظة: القالب اتربط فعلاً في المستودع ده (`git config commit.template = .gitmessage`).
+
 ---
 
 ## 🔄 CURRENT FOCUS (التركيز الحالي)
 
 ```
-Working On : لا مهمة 🔵 — 0.4 ✅ وخلاص؛ مستني أمر المستخدم للمهمة الجاية
-Next Up    : 0.5 (Git: main/develop + قالب commit + أول فرع بـ Tree ID) ثم 0.6 → 0.7
+Working On : لا مهمة 🔵 — 0.5 🟣 (ملفات + سكريبت جاهزين)؛ مستني أمر المستخدم للمهمة الجاية
+Next Up    : 0.7 (README + CHANGELOG + ملف الخطة الأصلية في docs/) ثم 1.x
 Parallel   : —
 Blockers   : لا يوجد
 ```
@@ -288,6 +299,8 @@ Blockers   : لا يوجد
 | 2026-10-10 | 0.1 | ✅ Verified | تشغيل smoke tests فعلية 7/7 للمكدس المخطط تحت Bun 1.4.3 وعلى PostgreSQL 16.4؛ اختلاف إعدادات الـ repo الحالي اتوثّق من غير تعديل للكود أو الاعتماديات، واعتماد CL-04 منتظر المستخدم |
 | 2026-10-10 | 0.2 | ✅ Verified | تهيئة المشروع: package.json + tsconfig strict مع `@a`/`@/*` + bunfig + bun.lock + src/alias وهيكل src/؛ إزالة قالب Node/Turso القديم (محفوظ في git عند 05303ed)؛ typecheck يعدّي والـ aliases متحقق منها بـruntime |
 | 2026-10-10 | 0.3 | ✅ Verified | ESLint flat + Prettier + حماية `@a`؛ الاختبار السلبي وقّع 5/5 انتهاكات؛ تصحيح تعارض `curly` مع eslint-config-prettier؛ lint وformat:check وtypecheck بيعدّوا |
+| 2026-10-10 | 0.4 | ✅ Verified | bunfig `[test]` بـ coverage + عتبة 80/80 per file + `coverageSkipTestFiles`؛ `src/alias/alias.test.ts` (5 اختبارات)؛ الإثبات السلبي: ملف تحت العتبة → exit 1؛ عتبة 95% للصلاحيات قرارها مسجّل وتتفعّل في 4.6 |
+| 2026-10-10 | 0.5 | 🟣 Implemented | `.gitmessage` (قالب commit) + `scripts/git/setup-git.sh` (يجهز القالب + `develop` + أول فرع Tree ID `feature/1.1.1-project-setup` وبيقبل `--push`)؛ اتاختبر في clone نضيف (idempotent + القالب بيظهر في commit حقيقي). قرار المستخدم: ملفات + سكريبت، وتوليد الفروع وقت الطلب/بعد الدمج (قيود جلسة الشغل على فرع واحد) |
 | 2026-10-10 | — | ✅ قرارات | تسجيل ADR-001…ADR-021 في ARCHITECTURE |
 | 2026-10-10 | — | ❓ فتح | CL-01…CL-05 + MOD-1 |
 
@@ -304,19 +317,21 @@ Blockers   : لا يوجد
 - 0.2 ✅: `package.json` بالحزمة المختبرة السبعة بإصدارتها بالظبط + `typescript@5.9.3` و`@types/bun` و`@types/bcrypt` · `tsconfig` strict مع مسارات `@a` و`@a/*` و`@/*` · `bunfig.toml` · `src/alias` (index/core/libs) · هيكل `src/` الفاضي. قالب Node/Turso القديم اتشال بالكامل (محفوظ في git عند `05303ed`) — ده تنفيذ قرار مسار الوثائق.
 - 0.3 ✅: `eslint.config.mjs` (flat) بقواعد §18 كاملة + حماية `@a` من الاستيراد المباشر (مع إعفاء `src/alias/**`) · `prettier.config.mjs` (singleQuote + semi) · سكريبتات `format`/`format:check` بحدود مقصودة تسيب الـ docs العربية في حالها. الاختبار السلبي أثبت إن القواعد الخمسة (restricted-imports وany وunused وeqeqeq وcurly) بتشتغل فعلاً.
 - 0.4 ✅: `bunfig.toml` بـ coverage شغالة دائماً + عتبة 80/80 per file (lines/functions) + `coverageSkipTestFiles` · `src/alias/alias.test.ts` (5 اختبارات حقيقية على `@a`) · الإثبات السلبي أثبت إن أي ملف تحت العتبة بيطلع exit 1. عتبة 95% للصلاحيات قرارها مسجّل وتتفعّل في 4.6.
+- 0.5 🟣: `.gitmessage` + `scripts/git/setup-git.sh` (قالب commit + `develop` + أول فرع Tree ID `feature/1.1.1-project-setup` بأمر واحد، idempotent وبيقبل `--push`) — اتاختبر في clone نضيف. قرار المستخدم: الملفات والسكريبت هنا، وتوليد الفروع وقت الطلب/بعد الدمج (الجلسة مقيّدة بفرع واحد).
 
 ### الحالة الحالية
-- 0.1 ✅ و0.2 ✅ و0.3 ✅ و0.4 ✅ و0.6 🟣؛ مفيش مهمة 🔵 دلوقتي؛ باقي المهام ⬜. CL-04 محسوم ✅.
+- 0.1 ✅ و0.2 ✅ و0.3 ✅ و0.4 ✅ و0.5 🟣 و0.6 🟣؛ مفيش مهمة 🔵 دلوقتي؛ باقي المهام ⬜. CL-04 محسوم ✅.
 - السكريبتات المؤكدة: `typecheck` ✅ · `lint` ✅ · `format`/`format:check` ✅ · `test` ✅ (5/5 مع تقرير تغطية وإجبار العتبة).
+- Git جاهز: قالب `.gitmessage` مربوط (`commit.template`) + `scripts/git/setup-git.sh` — تشغيله بيكمل0.5 لـ✅.
 
 ### آخر تحقق
+- `scripts/git/setup-git.sh` في clone نضيف: الفرعين اتعملوا وظهروا في `git branch -a` · إعادة التشغيل تخطّتهم · القالب بيظهر في `git commit` · `bash -n` نظيف.
 - `bun run test` → `5 pass / 0 fail` + تقرير تغطية 100% (ملفات `src/alias`) · الإثبات السلبي: ملف تحت العتبة → exit `1` رغم نجاح الاختبارات.
-- `bun run lint` → exit `0` · `bun run format:check` → `All matched files use Prettier code style!` · `bun run typecheck` → exit `0`.
-- `python3 scripts/docs/validate_docs.py --root .` بعد تحديث الـ Tracker → 0 أخطاء.
+- `bun run lint` · `bun run format:check` · `bun run typecheck` → exit `0` · `python3 scripts/docs/validate_docs.py --root .` → 0 أخطاء.
 
 ### الخطوة الجاية بالظبط
 1. استنى أمر المستخدم.
-2. عند الأمر: نفّذ 0.5 بس (Git: main/develop + قالب commit + أول فرع بـ Tree ID)، وبعدها 0.6.
+2. عند الأمر: نفّذ 0.7 بس (README + CHANGELOG + ملف الخطة الأصلية في docs/)، وبعدها 1.x. ولو المستخدم طلب توليد الفروع: `bash scripts/git/setup-git.sh [--push]` وتوثيق النتيجة هنا وإغلاق 0.5 ✅.
 
 ### قرارات مهمة (ملخّص — التفاصيل في ARCHITECTURE › ADR)
 - Bun + Hono (ADR-001) · Postgres فقط (ADR-002) · DB PRD ملزم لطبقة الداتابيز فقط (ADR-003).
@@ -348,6 +363,7 @@ Blockers   : لا يوجد
 | 2 | 2026-10-10 | Arena Agent | 0.1: فحص الـ repo واختبارات Bun/CL-04 | 0.1 ✅؛ CL-04 بانتظار اعتماد المستخدم | 7/7 smoke tests نجحوا على الإصدارات المسجلة؛ التطبيق الحالي مختلف عن الوثائق، ولم يتغير كوده أو اعتمادياته |
 | 3 | 2026-10-10 | Arena Agent | 0.2: تهيئة المشروع + إزالة قالب Node/Turso | 0.2 ✅؛ CL-04 محسوم | typecheck يعدّي و`@a`/`@/*` متحقق منهم بـruntime؛ lint وtest بواباتهما 0.3 و0.4 |
 | 4 | 2026-10-10 | Arena Agent | 0.3: ESLint + Prettier + no-restricted-imports · فتح PR #1 · جدول المهام · 0.4: bun test + عتبات التغطية | 0.3 ✅ و0.4 ✅؛ PR #1 مفتوح (commits `da6c852`+`cbd4b51`) | الاختبار السلبي لإثبات العتبة: ملف تحت 80% → exit 1 رغم نجاح الاختبارات؛ عتبة 95% للصلاحيات قرارها مسجّل وتتفعّل في 4.6 |
+| 5 | 2026-10-10 | Arena Agent | 0.5: قالب commit `.gitmessage` + سكريبت `scripts/git/setup-git.sh` + توثيق §9 (commit `e86b9c1` للـ0.4 اترفع في PR #1) | 0.5 🟣 (ملفات + سكريبت جاهزين ومُختبرين في clone) | قرار المستخدم: جلسة على فرع واحد فتوليد الفروع (`develop` + `feature/1.1.1-project-setup`) وقت الطلب/بعد الدمج؛ الاختبار في clone كشف وصلّح مشكلة `origin/main` و`--no-track` |
 | 4 | 2026-10-10 | Arena Agent | 0.3: ESLint flat + Prettier + حماية `@a` | 0.3 ✅ | اختبار سلبي 5/5 انتهاكات اتصادوا؛ تصحيح تعارض `curly` مع eslint-config-prettier؛ lint وformat:check وtypecheck خضرا |
 
 ---

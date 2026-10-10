@@ -229,6 +229,7 @@ Postgres فقط · `SERIAL` كمفتاح أساسي + `public_id` UUIDv7 في ا
 ```markdown
 ✅ فرع بترقيم شجري: <type>/<tree-id>-<slug> (افحص git branch -a واحسب الرقم، متخمّنش)
 ✅ Commit ذري بصيغة: <emoji> <type>(<scope>): <عنوان> + body بالمصري  (✨ feat · 🐛 fix · 📝 docs · ♻️ refactor · ✅ test · 🔧 chore · ⚡ perf · 🔒 security · 🗃️ db · 🏗️ arch)
+✅ القالب جاهز في `.gitmessage` · التجهيز الآلي: `bash scripts/git/setup-git.sh` (بيظبط القالب + `develop` + أول فرع Tree ID `feature/1.1.1-project-setup` وبيقبل `--push`)
 ✅ Squash Merge للـ feature الصغيرة، Merge Commit للـ release
 ❌ ممنوع force push على main/develop/release/* من غير تأكيد صريح · ❌ commits غامضة (fix / update)
 ```
