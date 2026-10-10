@@ -19,7 +19,7 @@
 | **Started** | 2026-10-10 |
 | **Last Updated** | 2026-10-10 |
 | **Current Phase** | Phase 0 — Repo Analysis & Setup |
-| **Overall Progress** | **5%** (3 / 63 مهمة ✅ Verified) |
+| **Overall Progress** | **6%** (4 / 63 مهمة ✅ Verified) |
 | **Repo State** | هيكل Bun مهيّأ (0.2): `package.json` بالحزمة المختبرة + `tsconfig` strict و`@a`/`@/*` + `bunfig.toml` + `bun.lock` + `src/alias`. قالب Node/Turso القديم اتشال (محتواه محفوظ في git عند `05303ed`) |
 | **Release Branch الحالي** | — (يتحدد عند أول فرع؛ Tree ID من `git branch -a`) |
 
@@ -53,7 +53,7 @@ Overall % = (✅ ÷ إجمالي المهام) × 100          ← 🟣 لا ي�
 
 | Phase | الاسم | الإجمالي | ✅ | 🟣 | 🔵 | 🔴 | % |
 |---|---|---|---|---|---|---|---|
-| 0 | Repo Analysis & Setup | 7 | 3 | 1 | 0 | 0 | 43% |
+| 0 | Repo Analysis & Setup | 7 | 4 | 1 | 0 | 0 | 57% |
 | 1 | Project Foundation | 10 | 0 | 0 | 0 | 0 | 0% |
 | 2 | Database Foundation | 12 | 0 | 0 | 0 | 0 | 0% |
 | 3 | Authentication | 7 | 0 | 0 | 0 | 0 | 0% |
@@ -61,7 +61,7 @@ Overall % = (✅ ÷ إجمالي المهام) × 100          ← 🟣 لا ي�
 | 5 | Multi-Tenancy | 7 | 0 | 0 | 0 | 0 | 0% |
 | 6 | Core API Modules | 9 | 0 | 0 | 0 | 0 | 0% |
 | 7 | Basic Hardening & Release | 5 | 0 | 0 | 0 | 0 | 0% |
-| **Σ** | | **63** | **3** | **1** | **0** | **0** | **5%** |
+| **Σ** | | **63** | **4** | **1** | **0** | **0** | **6%** |
 
 ---
 
@@ -74,7 +74,7 @@ Phase 0: Repo Analysis & Setup .................................... ⬜  (releas
 ├── 0.1  فحص الـ repo وتأكيد توافق Bun مع المكتبات المختارة ....... ✅
 ├── 0.2  تهيئة المشروع: package.json + tsconfig strict + bunfig + paths .... ✅
 ├── 0.3  ESLint flat config + Prettier + no-restricted-imports .... ✅
-├── 0.4  أدوات الاختبار bun test + عتبات التغطية 80/95 ............ ⬜
+├── 0.4  أدوات الاختبار bun test + عتبات التغطية 80/95 ............ ✅
 ├── 0.5  Git: main/develop + قالب commit + أول فرع بـ Tree ID ..... ⬜
 ├── 0.6  ملفات التوثيق الخمسة في الجذر ............................ 🟣  (اتكتبت؛ لسه تتحط في repo وتتراجع)
 └── 0.7  README + CHANGELOG + ملف الخطة الأصلية في docs/ .......... ⬜
@@ -211,13 +211,22 @@ Phase 7: Basic Hardening & Release ................................ ⬜  (releas
 - بوابات الجودة: typecheck ✅ · lint ✅ · format:check ✅ · test ⬜ (لسه 0.4).
 - ملاحظات: `curly` لازم تفضل بعد `prettier` في `eslint.config.mjs` — لو اتنقلت القاعدة هتتهدى تاني؛ التعليق في الملف بيوثق ده.
 
+### Task 0.4: أدوات الاختبار bun test + عتبات التغطية 80/95
+- Branch: — (لسه قبل فرع 0.5)   - Spec: —   - الحالة: ✅ VERIFIED
+- التنفيذ: `bunfig.toml` بـ `[test]`: `coverage = true` (التغطية شغالة مع كل `bun test`) · `coverageThreshold = { lines = 0.8, functions = 0.8 }` (بيتفحص **لكل ملف لوحده** زي موثق في Bun docs، وأي إخلال بيطلع exit 1) · `coverageSkipTestFiles = true` · `src/alias/alias.test.ts` باختبارات حقيقية على السطح العام `@a`.
+- الاختبارات: كل الحزم الـ10 في `@a` موجودة ومعظمها callable · `Hono` من `@a` ومن `@/alias/core` **نفس الوحدة** (توافق المسارين) · سلوك فعلي: Hono بيرد على طلب HTTP · Zod بيقبل/يرفض · bcrypt وbetterAuth بواجهاتهم المطلوبة → `5 pass / 0 fail` + تقرير تغطية 100% lines/funcs على ملفات `src/alias`.
+- الإثبات السلبي (عتبة التغطية): ملف مؤقت `src/tmp-low-coverage.ts` (دالة مغطاة + دالة لا) مع اختبار جزئي → الاختبارات كلها نجحت **بس** `bun run test` طلع **exit 1** لأن الملف تحت العتبة (funcs 50% · lines 33%) — العتبة بتتفرض فعلاً ومش شكلي؛ الملفين اتشالوا وبعدها رجع exit 0.
+- عتبة **95% للصلاحيات (4.6)**: موثقة كقرار في تعليق `bunfig.toml` والسجل ده — Bun مفيش per-path thresholds، ففي 4.6 هترفع العتبة العامة لكل الملفات (زي `PLAN.md` 4.6). المفروضة دلوقتي 80/80 لكل ملف.
+- بوابات الجودة: test ✅ (5/5 + coverage report) · lint ✅ · typecheck ✅ · format:check ✅.
+- ملاحظة بيئة: `bun` كان بره PATH في بيئة التنفيذ هنا (تحت `/tmp`)، فالتشغيل تم مع إضافته على PATH زي أي بيئة Bun حقيقية.
+
 ---
 
 ## 🔄 CURRENT FOCUS (التركيز الحالي)
 
 ```
-Working On : لا مهمة 🔵 — 0.3 ✅ وخلاص؛ مستني أمر المستخدم للمهمة الجاية
-Next Up    : 0.4 (bun test + عتبات التغطية 80/95) ثم 0.5 → 0.7
+Working On : لا مهمة 🔵 — 0.4 ✅ وخلاص؛ مستني أمر المستخدم للمهمة الجاية
+Next Up    : 0.5 (Git: main/develop + قالب commit + أول فرع بـ Tree ID) ثم 0.6 → 0.7
 Parallel   : —
 Blockers   : لا يوجد
 ```
@@ -294,19 +303,20 @@ Blockers   : لا يوجد
 - المستخدم وجه بمتابعة الوثيقة والخطة، وبعدها أمر بـ«كمل»: فاتعتمد CL-04 واتنفّذت 0.2.
 - 0.2 ✅: `package.json` بالحزمة المختبرة السبعة بإصدارتها بالظبط + `typescript@5.9.3` و`@types/bun` و`@types/bcrypt` · `tsconfig` strict مع مسارات `@a` و`@a/*` و`@/*` · `bunfig.toml` · `src/alias` (index/core/libs) · هيكل `src/` الفاضي. قالب Node/Turso القديم اتشال بالكامل (محفوظ في git عند `05303ed`) — ده تنفيذ قرار مسار الوثائق.
 - 0.3 ✅: `eslint.config.mjs` (flat) بقواعد §18 كاملة + حماية `@a` من الاستيراد المباشر (مع إعفاء `src/alias/**`) · `prettier.config.mjs` (singleQuote + semi) · سكريبتات `format`/`format:check` بحدود مقصودة تسيب الـ docs العربية في حالها. الاختبار السلبي أثبت إن القواعد الخمسة (restricted-imports وany وunused وeqeqeq وcurly) بتشتغل فعلاً.
+- 0.4 ✅: `bunfig.toml` بـ coverage شغالة دائماً + عتبة 80/80 per file (lines/functions) + `coverageSkipTestFiles` · `src/alias/alias.test.ts` (5 اختبارات حقيقية على `@a`) · الإثبات السلبي أثبت إن أي ملف تحت العتبة بيطلع exit 1. عتبة 95% للصلاحيات قرارها مسجّل وتتفعّل في 4.6.
 
 ### الحالة الحالية
-- 0.1 ✅ و0.2 ✅ و0.3 ✅ و0.6 🟣؛ مفيش مهمة 🔵 دلوقتي؛ باقي المهام ⬜. CL-04 محسوم ✅.
-- السكريبتات المؤكدة: `typecheck` ✅ · `lint` ✅ · `format`/`format:check` ✅ · `test` (هيجهز في 0.4).
+- 0.1 ✅ و0.2 ✅ و0.3 ✅ و0.4 ✅ و0.6 🟣؛ مفيش مهمة 🔵 دلوقتي؛ باقي المهام ⬜. CL-04 محسوم ✅.
+- السكريبتات المؤكدة: `typecheck` ✅ · `lint` ✅ · `format`/`format:check` ✅ · `test` ✅ (5/5 مع تقرير تغطية وإجبار العتبة).
 
 ### آخر تحقق
+- `bun run test` → `5 pass / 0 fail` + تقرير تغطية 100% (ملفات `src/alias`) · الإثبات السلبي: ملف تحت العتبة → exit `1` رغم نجاح الاختبارات.
 - `bun run lint` → exit `0` · `bun run format:check` → `All matched files use Prettier code style!` · `bun run typecheck` → exit `0`.
-- الاختبار السلبي على `src/negative-check.ts` المؤقت: `5 problems (5 errors)` بالقواعد المطلوبة كلها، والملف اتشال بعدها والبوابات رجعت خضرا.
 - `python3 scripts/docs/validate_docs.py --root .` بعد تحديث الـ Tracker → 0 أخطاء.
 
 ### الخطوة الجاية بالظبط
 1. استنى أمر المستخدم.
-2. عند الأمر: نفّذ 0.4 بس (bun test + عتبات التغطية 80/95) لحد `bun run test` يعدّي، وبعدها 0.5.
+2. عند الأمر: نفّذ 0.5 بس (Git: main/develop + قالب commit + أول فرع بـ Tree ID)، وبعدها 0.6.
 
 ### قرارات مهمة (ملخّص — التفاصيل في ARCHITECTURE › ADR)
 - Bun + Hono (ADR-001) · Postgres فقط (ADR-002) · DB PRD ملزم لطبقة الداتابيز فقط (ADR-003).
@@ -337,6 +347,7 @@ Blockers   : لا يوجد
 | 1 | 2026-10-10 | Claude | إنشاء الملفات الخمسة | 0.6 🟣 | بانتظار نقلها لـ repo وبدء 0.1 |
 | 2 | 2026-10-10 | Arena Agent | 0.1: فحص الـ repo واختبارات Bun/CL-04 | 0.1 ✅؛ CL-04 بانتظار اعتماد المستخدم | 7/7 smoke tests نجحوا على الإصدارات المسجلة؛ التطبيق الحالي مختلف عن الوثائق، ولم يتغير كوده أو اعتمادياته |
 | 3 | 2026-10-10 | Arena Agent | 0.2: تهيئة المشروع + إزالة قالب Node/Turso | 0.2 ✅؛ CL-04 محسوم | typecheck يعدّي و`@a`/`@/*` متحقق منهم بـruntime؛ lint وtest بواباتهما 0.3 و0.4 |
+| 4 | 2026-10-10 | Arena Agent | 0.3: ESLint + Prettier + no-restricted-imports · فتح PR #1 · جدول المهام · 0.4: bun test + عتبات التغطية | 0.3 ✅ و0.4 ✅؛ PR #1 مفتوح (commits `da6c852`+`cbd4b51`) | الاختبار السلبي لإثبات العتبة: ملف تحت 80% → exit 1 رغم نجاح الاختبارات؛ عتبة 95% للصلاحيات قرارها مسجّل وتتفعّل في 4.6 |
 | 4 | 2026-10-10 | Arena Agent | 0.3: ESLint flat + Prettier + حماية `@a` | 0.3 ✅ | اختبار سلبي 5/5 انتهاكات اتصادوا؛ تصحيح تعارض `curly` مع eslint-config-prettier؛ lint وformat:check وtypecheck خضرا |
 
 ---
